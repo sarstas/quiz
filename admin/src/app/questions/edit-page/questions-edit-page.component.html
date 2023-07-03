@@ -1,0 +1,22 @@
+<h1 class="mb-3">{{question ? 'Edit Question' : 'Create a Question'}}</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <label for="question" class="form-label">Question</label>
+    <textarea id="question" class="form-control" rows="3" formControlName="question"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea id="description" class="form-control" rows="3" formControlName="description"></textarea>
+  </div>
+
+  <div formArrayName="answers" class="mb-3">
+    <app-answers-edit
+            [control]="form.get('answers')"
+            [answers]="question?.answers"
+    ></app-answers-edit>
+  </div>
+
+  <button [disabled]="loading" type="submit" class="btn btn-primary">Submit</button>
+</form>

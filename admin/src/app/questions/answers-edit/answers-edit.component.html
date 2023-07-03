@@ -1,0 +1,36 @@
+<h2>Answers</h2>
+<div
+        *ngFor="let answerGroup of control?.controls; let i=index"
+        class="row align-items-center"
+        [formGroup]="answerGroup"
+>
+    <div class="col-6">
+        <input
+                type="text"
+                class="input form-control" id="answer1"
+                formControlName="answer"
+        />
+    </div>
+
+    <div class="col-auto">
+        <div class="mb-3 form-check">
+            <label class="form-check-label">
+                <input
+                        type="checkbox"
+                        class="form-check-input"
+                        formControlName="correct"
+                />
+                <span>Correct?</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="col-auto">
+        <button type="button" class="btn btn-danger" (click)="remove(i)">Remove</button>
+    </div>
+</div>
+
+<button type="button" class="btn btn-outline-primary" (click)="add()">Add more</button>
+<!--<button type="button" class="btn btn-light" (click)="add()">-->
+<!--    <i class="fa fa-plus"></i>-->
+<!--</button>-->
